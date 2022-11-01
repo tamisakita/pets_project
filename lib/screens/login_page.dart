@@ -12,7 +12,7 @@ class _loginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple[100],
+      backgroundColor: Colors.red[200],
       body: SafeArea(
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -89,7 +89,7 @@ class _loginPageState extends State<LoginPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: Material(
-                color: Colors.deepPurple,
+                color: Colors.brown[700],
                 borderRadius: const BorderRadius.all(Radius.circular(50)),
                 child: Center(
                   child: Padding(
