@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pets_project/screens/login_page.dart';
 import 'package:pets_project/screens/menu_screen.dart';
-import 'package:pets_project/screens/cat_curiosity_screen.dart';
+import 'package:pets_project/screens/cat_facts_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: MenuScreen.id,
       routes: {
         MenuScreen.id: (context) => const MenuScreen(),
-        CatCuriosityScreen.id: (context) => const CatCuriosityScreen(),
+        CatFactsScreen.id: (context) => const CatFactsScreen(),
       },
     );
   }

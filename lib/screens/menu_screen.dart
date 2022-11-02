@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pets_project/screens/cat_curiosity_screen.dart';
+import 'package:pets_project/screens/cat_facts_screen.dart';
 
 import '../components/rounded_button.dart';
 
@@ -34,7 +34,7 @@ class MenuScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(
                       context,
-                      CatCuriosityScreen.id,
+                      CatFactsScreen.id,
                     );
                   },
                 ),
