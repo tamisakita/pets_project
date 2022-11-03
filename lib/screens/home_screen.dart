@@ -2,8 +2,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pets_project/screens/cat_fact_screen.dart';
-import 'package:pets_project/screens/login_screen.dart';
 import 'package:pets_project/screens/menu_screen.dart';
+import 'package:pets_project/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int index = 1;
 
   final screens = [
-    LoginScreen(),
+    ProfileScreen(),
     MenuScreen(),
     CatFactScreen(),
   ];

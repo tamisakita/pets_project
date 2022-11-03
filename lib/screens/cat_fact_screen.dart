@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:pets_project/models/cat_fact_model.dart';
+import 'package:pets_project/screens/cat_fact_detail_screen.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -35,7 +36,12 @@ class _CatFactScreenState extends State<CatFactScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+
+      backgroundColor:  Colors.grey[300],
+      appBar: AppBar(
+        backgroundColor: Colors.red[200],
+        title: Text('Cat Facts'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView.separated(
@@ -51,7 +57,7 @@ class _CatFactScreenState extends State<CatFactScreen> {
                   Expanded(
                     flex: 5,
                     child: Padding(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(40),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -60,18 +66,17 @@ class _CatFactScreenState extends State<CatFactScreen> {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
-                              fontSize: 22,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 16),
-                          // Text(
-                          //   catFact.length,
-                          //   style: const TextStyle(
-                          //     fontSize: 16,
+                          // Container(
+                          //   child: InkWell(
+                          //     onTap: () {
+                          //       Navigator.push(context, MaterialPageRoute(builder: (context) => CatFactDetailScreen(catFact)));
+                          //     },
                           //   ),
-                          //   maxLines: 5,
-                          //   overflow: TextOverflow.ellipsis,
+                          //     // child: Icon(Icons.arrow_forward_ios_sharp,)
                           // ),
                         ],
                       ),
