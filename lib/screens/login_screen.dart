@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  static const String id = 'login_screen';
+
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _loginPageState();
+  State<LoginScreen> createState() => _loginScreenState();
 }
 
-class _loginPageState extends State<LoginPage> {
+class _loginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,15 +18,13 @@ class _loginPageState extends State<LoginPage> {
       body: SafeArea(
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://cdn.imgbin.com/9/16/7/imgbin-avatar-youtube-cat-cute-dog-vaVWaZpiGRXq8EdFFUPbDb6aN.jpg'),
-                radius: 70),
+            Container(
+                height: 100, child: Image.asset('lib/images/cat-four.png')),
             SizedBox(height: 16),
             Text(
-              'Hello Again!',
+              'Hello Cat Lover!',
               style: GoogleFonts.concertOne(
-                fontSize: 56,
+                fontSize: 50,
               ),
             ),
             SizedBox(
@@ -37,7 +37,7 @@ class _loginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 40,
             ),
 
             //email text field
@@ -85,19 +85,19 @@ class _loginPageState extends State<LoginPage> {
               height: 10,
             ),
 
-            // sign
+            // log in button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: Material(
-                color: Colors.brown[700],
+                color: Colors.grey[300],
                 borderRadius: const BorderRadius.all(Radius.circular(50)),
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(20.0),
                     child: Text(
-                      'Sign In',
+                      'Log In',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),

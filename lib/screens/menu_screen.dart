@@ -1,6 +1,7 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pets_project/screens/cat_curiosity_screen.dart';
+import 'package:pets_project/screens/cat_fact_screen.dart';
 
 import '../components/rounded_button.dart';
 
@@ -20,6 +21,9 @@ class MenuScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                  height: 150,
+                    child: Image.asset('lib/images/cat.png')),
                 SizedBox(height: 16),
                 Text(
                   'All About Cats!',
@@ -27,14 +31,14 @@ class MenuScreen extends StatelessWidget {
                     fontSize: 45,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 30),
                 RoundedButton(
                   icon: Icons.person,
                   text: 'Discover',
                   onTap: () {
                     Navigator.pushNamed(
                       context,
-                      CatCuriosityScreen.id,
+                      CatFactScreen.id,
                     );
                   },
                 ),
