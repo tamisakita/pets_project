@@ -49,40 +49,45 @@ class _CatFactScreenState extends State<CatFactScreen> {
           separatorBuilder: (_, __) => const SizedBox(height: 16),
           itemBuilder: (_, index) {
             final catFact = catFactList[index];
-            return Material(
-              elevation: 4,
-              borderRadius: BorderRadius.circular(16),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.all(40),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            catFact.fact,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+            return InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CatFactDetailScreen(catFact)));
+                  },
+              child: Material(
+                elevation: 4,
+                borderRadius: BorderRadius.circular(16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.all(40),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              catFact.fact,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          // Container(
-                          //   child: InkWell(
-                          //     onTap: () {
-                          //       Navigator.push(context, MaterialPageRoute(builder: (context) => CatFactDetailScreen(catFact)));
-                          //     },
-                          //   ),
-                          //     // child: Icon(Icons.arrow_forward_ios_sharp,)
-                          // ),
-                        ],
+                            // Container(
+                            //   child: InkWell(
+                            //     onTap: () {
+                            //       Navigator.push(context, MaterialPageRoute(builder: (context) => CatFactDetailScreen(catFact)));
+                            //     },
+                            //   ),
+                            //     // child: Icon(Icons.arrow_forward_ios_sharp,)
+                            // ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },

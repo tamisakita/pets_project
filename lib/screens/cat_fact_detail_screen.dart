@@ -17,19 +17,24 @@ class CatFactDetailScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('lib/images/cat-four.png'),
-            Text(
-              catFact.fact,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 17.0,
-                fontWeight: FontWeight.bold,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  height: 250,
+                  child: Image.asset('lib/images/cat-four.png')),
+              SizedBox(height: 16),
+              Text(
+                catFact.fact,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 17.0,
+                  fontWeight: FontWeight.bold,
+                )
               )
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
