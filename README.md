@@ -10,7 +10,7 @@ O projeto é composto por um login e register com autenticação com Firebase (N
 Dentro, você pode buscar por curiosidades sobre gatinhos. O projeto faz a busca pelas curiosidades na API https://catfact.ninja/facts.
 ```
 ## Demonstração
-![Alt Text](gif/gif.gif)
+![Alt Text](https://github.com/tamisakita/pets_project/blob/main/gif.gif)
 
 ## 🤝 Colaboradores
 
