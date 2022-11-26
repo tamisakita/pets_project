@@ -1,16 +1,94 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pets_project/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
+  final bool isEditing;
 
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key, required this.isEditing}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _loginScreenState();
 }
 
 class _loginScreenState extends State<LoginScreen> {
+  String login = '';
+  String password = '';
+
+  bool loginAlert(BuildContext context, String text) {
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          content: Text(text),
+          actions: [
+            TextButton(
+                onPressed: () => {Navigator.of(context).pop()},
+                child: const Text('OK'))
+          ],
+        ));
+    return false;
+  }
+
+  void doLogin() {
+    FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: login,
+      password: password,
+    ).then((e) => {
+        if (FirebaseAuth.instance.currentUser != null)
+            Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()))
+      }
+    ).catchError((e) {
+      var authError = e as FirebaseAuthMultiFactorException;
+      switch (authError.code) {
+        case 'invalid-email':
+          loginAlert(context, 'Invalid e-mail');
+          break;
+        case 'user-disabled':
+          loginAlert(context, 'User disabled');
+          break;
+        case 'user-not-found':
+          loginAlert(context, 'User not found');
+          break;
+        case 'wrong-password':
+          loginAlert(context, 'User not found, check e-mail and password');
+          break;
+        default:
+          loginAlert(context, 'Unknown error');
+        }
+    });
+  }
+
+  void doRegister() {
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: login,
+      password: password,
+    ).then((e) => {
+    if (FirebaseAuth.instance.currentUser != null)
+        Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()))
+    }
+      ).catchError((e) {
+      var authError = e as FirebaseAuthException;
+      switch (authError.code) {
+        case 'invalid-email':
+          loginAlert(context, 'Invalid e-mail');
+          break;
+        case 'email-already-in-use':
+          loginAlert(context, 'E-mail already in use');
+          break;
+        case 'weak-password':
+          loginAlert(context, 'Weak password');
+          break;
+        case 'operation-not-allowed':
+        default:
+          loginAlert(context, 'Unknown error');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +128,11 @@ class _loginScreenState extends State<LoginScreen> {
                 child: Padding(
                   padding: EdgeInsets.only(left: 20.0),
                   child: TextField(
+                    onChanged: (text) {
+                      setState(() {
+                        login = text;
+                      });
+                    },
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Email',
@@ -72,6 +155,11 @@ class _loginScreenState extends State<LoginScreen> {
                 child: Padding(
                   padding: EdgeInsets.only(left: 20.0),
                   child: TextField(
+                    onChanged: (text) {
+                      setState(() {
+                        password = text;
+                      });
+                    },
                     obscureText: true,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -91,15 +179,24 @@ class _loginScreenState extends State<LoginScreen> {
               child: Material(
                 color: Colors.grey[300],
                 borderRadius: const BorderRadius.all(Radius.circular(50)),
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Text(
-                      'Log In',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                child: InkWell(
+                  onTap: () {
+                    if (widget.isEditing) {
+                      doRegister();
+                    }else {
+                       doLogin();
+                    }
+                  },
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text(
+                        widget.isEditing ? "Create Account" : "Log In",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
@@ -111,24 +208,32 @@ class _loginScreenState extends State<LoginScreen> {
             ),
 
             //message  sign in
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Not a member? ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+            if (!widget.isEditing)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Not a member? ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Text(
-                  'Register now',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              ],
-            ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (
+                              context) => const LoginScreen(isEditing: true)));
+                    },
+                    child: const Text(
+                      'Register now',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
           ]),
         ),
       ),
