@@ -9,6 +9,8 @@ Esse projeto é responsável por demonstrar curiosidades dos bichanos mais lindo
 O projeto é composto por um login e register com autenticação com Firebase (Necessário configurar o firebase em seu projeto).
 Dentro, você pode buscar por curiosidades sobre gatinhos. O projeto faz a busca pelas curiosidades na API https://catfact.ninja/facts.
 ```
+## Demonstração
+![Alt Text](gif/gif.gif)
 
 ## 🤝 Colaboradores
 
