@@ -1,4 +1,7 @@
 # Pets Project
+Este projeto foi feito para a disciplina MOBILE DEVELOPMENT do curso de 
+MBA EM FULL STACK DEVELOPMENT - DESIGN, ENGINEERING & DEPLOYMENT
+da turma 43scj.
 
 # Usando Pets project
 
@@ -11,6 +14,27 @@ Dentro, você pode buscar por curiosidades sobre gatinhos. O projeto faz a busca
 ```
 ## Demonstração
 ![Alt Text](https://github.com/tamisakita/pets_project/blob/main/gif.gif)
+
+## Features
+- [x] Sign up
+- [x] Login
+- [x] Home Page
+- [x] CatFacts 
+- [x] CatFact Detail
+- [x] Profile Page
+
+### Sign up
+![alt text](https://github.com/tamisakita/pets_project/blob/main/signup.jpg "Sign up")
+### Log in
+![alt text](https://github.com/tamisakita/pets_project/blob/main/login.jpg "Log in")
+### Home Page
+![alt text](https://github.com/tamisakita/pets_project/blob/main/home.jpg "Home Page")
+### CatFacts
+![alt text](https://github.com/tamisakita/pets_project/blob/main/catfacts.jpg "CatFacts")
+### CatFact Detail
+![alt text](https://github.com/tamisakita/pets_project/blob/main/catfact.jpg "CatFact Detail")
+### Profile Page
+![alt text](https://github.com/tamisakita/pets_project/blob/main/profile.jpg "Profile Page")
 
 ## 🤝 Colaboradores
 
